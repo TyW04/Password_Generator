@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Local Password Generator (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "Local Password Generator (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

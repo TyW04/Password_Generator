@@ -1,0 +1,1 @@
+D:\GitHub\Local Password Generator\Local Password Generator.csproj;x64
