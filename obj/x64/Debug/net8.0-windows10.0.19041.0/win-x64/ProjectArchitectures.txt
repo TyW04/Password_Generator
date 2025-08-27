@@ -1,1 +1,1 @@
-D:\GitHub\Local Password Generator\Local Password Generator.csproj;x64
+D:\GitHub\Local_Password_Generator\Local Password Generator.csproj;x64

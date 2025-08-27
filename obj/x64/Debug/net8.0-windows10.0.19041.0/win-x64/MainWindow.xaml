@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="Local_Password_Generator.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Local_Password_Generator"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="Local Password Generator">
+
+    <StackPanel x:ConnectionId='2' x:Name="rootPanel" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Button x:ConnectionId='3' x:Name="generatePassword"                                >Generate Password</Button>
+
+        <TextBlock x:ConnectionId='4' x:Name="pwTextBlock"
+           Text="TestPassword123"
+           Width="400"
+           IsTextSelectionEnabled="True"
+           Visibility="Collapsed"/>
+
+    </StackPanel>
+
+
+</Window>
+
