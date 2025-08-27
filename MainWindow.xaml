@@ -9,11 +9,16 @@
     mc:Ignorable="d"
     Title="Local Password Generator">
 
-    <Window.SystemBackdrop>
-        <MicaBackdrop />
-    </Window.SystemBackdrop>
+    <StackPanel x:Name="rootPanel" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Button x:Name="generatePassword" Click="button_generatePassword">Generate Password</Button>
 
-    <Grid>
+        <TextBlock x:Name="pwTextBlock"
+           Text="TestPassword123"
+           Width="400"
+           IsTextSelectionEnabled="True"
+           Visibility="Collapsed"/>
 
-    </Grid>
+    </StackPanel>
+
+
 </Window>
