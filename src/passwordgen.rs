@@ -11,17 +11,17 @@ const SYMBOLS: [char; 32] = ['`', '~', '!', '@', '#', '$', '%', '^', '&', '*', '
  * Generates a list of the possible characters that can be used in the
  * user's final password.
  */
-fn generate_char_list(include_symbols: bool, include_numbers: bool) -> Vec<char> {
+fn generate_char_list(no_symbols: bool, no_numbers: bool) -> Vec<char> {
     let mut char_list = Vec::new();
 
     char_list.extend('a'..='z');
     char_list.extend('A'..='Z');
 
-    if include_symbols {
+    if !no_symbols {
         char_list.extend(SYMBOLS.iter());
     }
 
-    if include_numbers {
+    if !no_numbers {
         char_list.extend('0'..='9');
     }
 
@@ -62,8 +62,8 @@ fn create_password(len: u8, char_list: Vec<char>, uppercase_only: bool, lowercas
  * Returns a pointer to the string.
  */
 #[unsafe(no_mangle)]
-pub extern "C" fn generate_password(len: u8, include_symbols: bool, include_numbers: bool, uppercase_only: bool,lowercase_only: bool) -> *mut c_char {
-    let char_list: Vec<char> = generate_char_list(include_symbols, include_numbers);
+pub extern "C" fn generate_password(len: u8, no_symbols: bool, no_numbers: bool, uppercase_only: bool,lowercase_only: bool) -> *mut c_char {
+    let char_list: Vec<char> = generate_char_list(no_symbols, no_numbers);
     let password = create_password(len, char_list, uppercase_only, lowercase_only);
 
     let c_pass_ptr: *mut c_char = CString::new(password).unwrap().into_raw();
