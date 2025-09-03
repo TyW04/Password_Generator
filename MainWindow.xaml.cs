@@ -24,25 +24,28 @@ namespace Local_Password_Generator
         {
             InitializeComponent();
             Title = "Password Generator";
-            AppWindow.Resize(new Windows.Graphics.SizeInt32(600,800));
+            AppWindow.Resize(new Windows.Graphics.SizeInt32(400, 600));
+            
         }
 
         // Handle the button click event for password generation.
         // Displays the generated password in a non-editable text block.
         private void button_generatePassword(object sender, RoutedEventArgs e)
         {
+
             // Call password generation method and display result
 
             // Display password
-            generatePassword.Visibility = Visibility.Collapsed;
-            var pwTextBlock = (TextBlock)rootPanel.FindName("pwTextBlock"); // WinUI can't find the object in XAML so I have to do this
+
             if (pwTextBlock != null)
             {
-                pwTextBlock.Text = "TestPassword123";
+                pwTextBlock.Text = "";
                 pwTextBlock.HorizontalTextAlignment = TextAlignment.Center;
+                pwTextBlock.VerticalAlignment = VerticalAlignment.Bottom;
                 pwTextBlock.Visibility = Visibility.Visible;
             }
 
         }
+
     }
 }
