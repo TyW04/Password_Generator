@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Local Password Generator")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3f521ef9d30cd87cba90d14cea4d3a98ba843968")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c87ba47f2196f24e73ed2490aa24546876d3041d")]
 [assembly: System.Reflection.AssemblyProductAttribute("Local Password Generator")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Local Password Generator")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

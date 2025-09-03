@@ -9,17 +9,49 @@
     mc:Ignorable="d"
     Title="Local Password Generator">
 
-    <StackPanel x:ConnectionId='2' x:Name="rootPanel" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Button x:ConnectionId='3' x:Name="generatePassword"                                >Generate Password</Button>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
 
-        <TextBlock x:ConnectionId='4' x:Name="pwTextBlock"
-           Text="TestPassword123"
-           Width="400"
-           IsTextSelectionEnabled="True"
-           Visibility="Collapsed"/>
+        <StackPanel HorizontalAlignment="Center">
+            <CheckBox x:ConnectionId='4' x:Name="includeSymbols"              
+                      Content="No Symbols"
+                      Margin="0,100,0,0"/>
 
-    </StackPanel>
+            <CheckBox x:ConnectionId='5' x:Name="includeNumbers"
+                      Content="No Numbers"
+                      />
 
+            <CheckBox x:ConnectionId='6' x:Name="uppercaseOnly"
+                      Content="Uppercase Only"
+                      />
+
+            <CheckBox x:ConnectionId='7' x:Name="lowercaseOnly"
+                      Content="Lowercase Only"
+                      />    
+        </StackPanel>
+        <!-- Password setting controls -->
+        
+
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+            <!-- Button to activate password generation -->
+            <Button x:ConnectionId='2' x:Name="generatePassword" 
+                                                   
+                    Margin="0,0,0,150"
+                    HorizontalAlignment="Center">Generate Password </Button>
+
+            
+            <!-- Password text -->
+            <TextBlock x:ConnectionId='3' x:Name="pwTextBlock"
+                       Width="300"
+                       IsTextSelectionEnabled="True"
+                       Visibility="Collapsed"                   
+                       HorizontalAlignment="Center"/>
+        </StackPanel>
+    </Grid>
 
 </Window>
 
