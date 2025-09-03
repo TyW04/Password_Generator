@@ -9,16 +9,48 @@
     mc:Ignorable="d"
     Title="Local Password Generator">
 
-    <StackPanel x:Name="rootPanel" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Button x:Name="generatePassword" Click="button_generatePassword">Generate Password</Button>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
 
-        <TextBlock x:Name="pwTextBlock"
-           Text="TestPassword123"
-           Width="400"
-           IsTextSelectionEnabled="True"
-           Visibility="Collapsed"/>
+        <StackPanel HorizontalAlignment="Center">
+            <CheckBox x:Name="includeSymbols"              
+                      Content="No Symbols"
+                      Margin="0,100,0,0"/>
 
-    </StackPanel>
+            <CheckBox x:Name="includeNumbers"
+                      Content="No Numbers"
+                      />
 
+            <CheckBox x:Name="uppercaseOnly"
+                      Content="Uppercase Only"
+                      />
+
+            <CheckBox x:Name="lowercaseOnly"
+                      Content="Lowercase Only"
+                      />    
+        </StackPanel>
+        <!-- Password setting controls -->
+        
+
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+            <!-- Button to activate password generation -->
+            <Button x:Name="generatePassword" 
+                    Click="button_generatePassword"
+                    Margin="0,0,0,150"
+                    HorizontalAlignment="Center">Generate Password </Button>
+
+            
+            <!-- Password text -->
+            <TextBlock x:Name="pwTextBlock"
+                       Width="300"
+                       IsTextSelectionEnabled="True"
+                       Visibility="Collapsed"                   
+                       HorizontalAlignment="Center"/>
+        </StackPanel>
+    </Grid>
 
 </Window>
