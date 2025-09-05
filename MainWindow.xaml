@@ -15,25 +15,38 @@
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
 
+        <!-- Password setting controls -->
         <StackPanel HorizontalAlignment="Center">
-            <CheckBox x:Name="includeSymbols"              
+            <CheckBox x:Name="symbolsCheckbox"              
                       Content="No Symbols"
                       Margin="0,100,0,0"/>
 
-            <CheckBox x:Name="includeNumbers"
+            <CheckBox x:Name="numbersCheckbox"
                       Content="No Numbers"
                       />
 
-            <CheckBox x:Name="uppercaseOnly"
+            <CheckBox x:Name="uppercaseOnlyCheckbox"
                       Content="Uppercase Only"
                       />
 
-            <CheckBox x:Name="lowercaseOnly"
+            <CheckBox x:Name="lowercaseOnlyCheckbox"
                       Content="Lowercase Only"
                       />    
         </StackPanel>
-        <!-- Password setting controls -->
         
+        <!-- Slider bar for password length -->
+        <StackPanel Grid.Row="2" Width="300" Margin="0,-100">
+            <Slider x:Name="passwordLengthSlider"
+                    Minimum="8"
+                    Maximum="64"                
+                    TickPlacement="None"
+                    ValueChanged="lengthSlider_ValueChanged"/>
+                    
+            
+            <TextBlock x:Name="currentLength"
+                       Margin="125,0,0,10"
+                       Text="Length: 16"/>
+        </StackPanel>
 
         <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
 
