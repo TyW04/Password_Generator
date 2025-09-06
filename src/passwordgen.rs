@@ -8,6 +8,31 @@ const SYMBOLS: [char; 32] = ['`', '~', '!', '@', '#', '$', '%', '^', '&', '*', '
                             ',', '<', '.', '>', '/', '?'];
 
 /**
+ * Generates a random password given the boolean selections from the user.
+ * Returns a pointer to the string.
+ */
+#[unsafe(no_mangle)]
+pub extern "C" fn generate_password(len: u8, include_symbols: bool, include_numbers: bool, uppercase_only: bool,lowercase_only: bool) -> *mut c_char {
+    let char_list: Vec<char> = generate_char_list(include_symbols, include_numbers);
+    let password = create_password(len, char_list, uppercase_only, lowercase_only);
+
+    let c_pass_ptr: *mut c_char = CString::new(password).unwrap().into_raw();
+
+    c_pass_ptr // Return the pointer to the c-string
+}
+
+/**
+ * Frees memory of previously transferred CString.
+ * Call this from C code to properly free memory.
+ */
+#[unsafe(no_mangle)]
+pub extern "C" fn free_c_string(ptr: *mut c_char) {
+    unsafe {
+        let _  = CString::from_raw(ptr);
+    }
+}
+
+/**
  * Generates a list of the possible characters that can be used in the
  * user's final password.
  */
@@ -55,29 +80,4 @@ fn create_password(len: u8, char_list: Vec<char>, uppercase_only: bool, lowercas
     }
 
     password
-}
-
-/**
- * Generates a random password given the boolean selections from the user.
- * Returns a pointer to the string.
- */
-#[unsafe(no_mangle)]
-pub extern "C" fn generate_password(len: u8, include_symbols: bool, include_numbers: bool, uppercase_only: bool,lowercase_only: bool) -> *mut c_char {
-    let char_list: Vec<char> = generate_char_list(include_symbols, include_numbers);
-    let password = create_password(len, char_list, uppercase_only, lowercase_only);
-
-    let c_pass_ptr: *mut c_char = CString::new(password).unwrap().into_raw();
-
-    c_pass_ptr // Return the pointer to the c-string
-}
-
-/**
- * Frees memory of previously transferred CString.
- * Call this from C code to properly free memory.
- */
-#[unsafe(no_mangle)]
-pub extern "C" fn free_c_string(ptr: *mut c_char) {
-    unsafe {
-        let _  = CString::from_raw(ptr);
-    }
 }
