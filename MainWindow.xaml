@@ -11,59 +11,79 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*" />
-            <RowDefinition Height="1*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <!-- Password setting controls -->
-        <StackPanel HorizontalAlignment="Center">
+        <StackPanel Grid.Row="0" HorizontalAlignment="Center" Margin="0,50">
             <CheckBox x:Name="symbolsCheckbox"              
-                      Content="No Symbols"
-                      Margin="0,100,0,0"/>
+                      Content="No Symbols"/>
 
             <CheckBox x:Name="numbersCheckbox"
-                      Content="No Numbers"
-                      />
+                      Content="No Numbers"/>
 
             <CheckBox x:Name="uppercaseOnlyCheckbox"
-                      Content="Uppercase Only"
-                      />
+                      Content="Uppercase Only"/>
 
             <CheckBox x:Name="lowercaseOnlyCheckbox"
-                      Content="Lowercase Only"
-                      />    
+                      Content="Lowercase Only"/>    
         </StackPanel>
         
         <!-- Slider bar for password length -->
-        <StackPanel Grid.Row="2" Width="300" Margin="0,-100">
+        <StackPanel Grid.Row="1" Width="300" Margin="0,-30,0,0">
             <Slider x:Name="passwordLengthSlider"
                     Minimum="8"
                     Maximum="64"                
                     TickPlacement="None"
                     ValueChanged="lengthSlider_ValueChanged"/>
-                    
-            
+
+
             <TextBlock x:Name="currentLength"
-                       Margin="125,0,0,10"
+                       HorizontalAlignment="Center"
                        Text="Length: 16"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Grid.Row="2" HorizontalAlignment="Center" Margin="0,80,0,20">
 
             <!-- Button to activate password generation -->
             <Button x:Name="generatePassword" 
-                    Click="button_generatePassword"
-                    Margin="0,0,0,150"
-                    HorizontalAlignment="Center">Generate Password </Button>
+                    Click="button_generatePassword"     
+                    HorizontalAlignment="Center"
+                    >Generate Password
+            </Button>
 
-            
-            <!-- Password text -->
-            <TextBlock x:Name="pwTextBlock"
-                       Width="300"
-                       IsTextSelectionEnabled="True"
-                       Visibility="Collapsed"                   
-                       HorizontalAlignment="Center"/>
         </StackPanel>
+
+        <StackPanel Grid.Row="3" HorizontalAlignment="Center">
+           
+            <!-- White box for password text to be displayed in -->
+            <Border x:Name="pwTextBorder" Width="300" Height="50" Background="White" HorizontalAlignment="Center">
+                <!-- Password text -->
+                <TextBlock x:Name="pwTextBlock"
+                           Text="TestPassword123"                           
+                           IsTextSelectionEnabled="True"
+                           Visibility="Collapsed"
+                           Margin="0,0,0,0"
+                           Foreground="Black"
+                           HorizontalTextAlignment="Center"
+                           VerticalAlignment="Center"/>
+            </Border>            
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" HorizontalAlignment="Center">
+            <!-- Copy password button -->
+            <Button x:Name="copyPassword"
+                    Margin="0,20,0,0"
+                    Click="button_copyPasswordClipboard"
+                    HorizontalAlignment="Center"
+                    >Copy to Clipboard
+            </Button>
+        </StackPanel>
+
     </Grid>
 
 </Window>
