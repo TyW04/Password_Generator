@@ -21,13 +21,16 @@ using Windows.Foundation.Collections;
 
 namespace Local_Password_Generator
 {
-    public sealed partial class MainWindow : Window
-    {
 
+    public partial class Rust {
         [DllImport("passwordgen.dll", CallingConvention = CallingConvention.Cdecl)]
         static extern IntPtr generate_password(byte length, bool includeSymbols, bool includeNumbers, bool uppercaseOnly, bool lowercaseOnly);
         [DllImport("passwordgen.dll", CallingConvention = CallingConvention.Cdecl)]
         static extern void free_c_string(IntPtr password);
+    }
+    
+    public sealed partial class MainWindow : Window
+    {
 
         public MainWindow()
         {
@@ -44,15 +47,15 @@ namespace Local_Password_Generator
 
             // Get password
             
-            IntPtr passwordPtr = generate_password((byte)passwordLengthSlider.Value,
+            IntPtr passwordPtr = Rust.generate_password((byte)passwordLengthSlider.Value,
                                                    getIncludeSymbolsCheck(), 
                                                    getIncludeNumbersCheck(),
                                                    getUppercaseOnlyCheck(),
                                                    getLowercaseOnlyCheck()); // Get pointer to C string from Rust
-            /*
+            
             String password = Marshal.PtrToStringAnsi(passwordPtr) ?? String.Empty; // If null, return empty string
-            free_c_string(passwordPtr); // Pass back to Rust and deallocate memory
-            */
+            Rust.free_c_string(passwordPtr); // Pass back to Rust and deallocate memory
+            
             // Display password
             if (pwTextBlock != null)
             {
