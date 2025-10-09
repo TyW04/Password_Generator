@@ -1,6 +1,7 @@
+// TODO: Fix generation to use rand::rngs:OsRng for cryptographically secure generation.
 use std::ffi::CString;
 use std::ffi::c_char;
-use rand::Rng;
+use rand::rngs::OsRng;
 
 // Basic symbol table that can be used within passwords
 const SYMBOLS: [char; 32] = ['`', '~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-',
